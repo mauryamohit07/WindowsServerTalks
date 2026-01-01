@@ -1,0 +1,19 @@
+
+title: "Windows Server Talks"
+description: "DFS, Active Directory, Hyper-V, and PowerShell Guides by Mohit Maurya"
+theme: jekyll-theme-cayman
+
+markdown: GFM
+
+# This makes your .md files become full pages
+collections:
+  docs:
+    output: true
+
+# Navigation (optional)
+navbar:
+  - name: "Home"
+    link: "/"
+  - name: "DFS Backup"
+    link: "/dfs-backup-domain-namespace/"
+  - name: "DFS Link Recovery"
