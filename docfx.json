@@ -1,35 +1,45 @@
 
 {
+  "metadata": [
+    {
+      "src": [
+        {
+          "files": [
+            "docs/**/*.md"
+          ],
+          "exclude": [
+            "README.md"
+          ]
+        }
+      ],
+      "dest": "api"
+    }
+  ],
   "build": {
     "content": [
       {
         "files": [
-          "*.md"
-        ],
-        "src": "docs"
-      },
-      {
-        "files": [
-          "toc.yml"
-        ],
-        "src": "docs"
+          "docs/**/*.md",
+          "docs/toc.yml"
+        ]
       }
     ],
     "resource": [
       {
         "files": [
-          "images/**"
+          "docs/images/**/*"
         ],
-        "src": "docs"
+        "dest": "images"
       }
     ],
-    "dest": "_site",
     "globalMetadata": {
       "name": "Windows Server Talks",
-      "description": "DFS, AD, Hyper-V, and PowerShell Guides by Mohit Maurya"
+      "description": "DFS, Active Directory, Hyper‑V, and PowerShell Guides by Mohit Maurya"
     },
     "template": [
+      "default",
       "modern"
-    ]
+    ],
+    "dest": "_site"
   }
 }
