@@ -11,7 +11,16 @@ baseurl: "/WindowsServerTalks"
 
 markdown: GFM
 
+plugins:
+  - jekyll-relative-links
+
+
 # This makes .md pages publish correctly
+
+relative_links:
+  enabled: true
+  collections: true
+
 collections:
   docs:
     output: true
