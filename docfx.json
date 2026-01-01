@@ -1,27 +1,15 @@
 
 {
-  "metadata": [
-    {
-      "src": [
-        {
-          "files": [ "**/*.md" ],
-          "exclude": [ "README.md" ]
-        }
-      ],
-      "dest": "api"
-    }
-  ],
   "build": {
     "content": [
-      { "files": [ "**/*.md" ] }
+      { "files": ["docs/**/*.md"], "exclude": ["README.md"] }
     ],
     "resource": [
-      { "files": [ "images/**" ] }
+      { "files": ["docs/images/**"] }
     ],
-    "dest": "_site",
     "globalMetadata": {
       "name": "Windows Server Talks",
-      "description": "DFS, AD, Hyper-V, and PowerShell Guides by Mohit Maurya"
+      "description": "DFS, AD, Hyper-V & PowerShell Guides by Mohit Maurya"
     },
     "template": [
       "default",
