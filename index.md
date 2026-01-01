@@ -7,7 +7,7 @@ permalink: /
 
 Welcome to Windows Server Talks documentation.
 
-- {% link Domain-Based-DFS-N-Auto-Backup.md %}
+[Domain‑Based DFS‑N Auto Backup](/WindowsServerTalks/domain-based-dfs-n-auto-backup/)
 - {% link Recover-Deleted-DFS-N-links.md %}
 
 *DFS, Active Directory, Hyper‑V, and PowerShell Guides by Mohit Maurya*
