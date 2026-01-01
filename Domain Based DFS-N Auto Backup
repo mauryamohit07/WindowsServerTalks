@@ -4,7 +4,6 @@ dfs-backup-domain-namespace.md
 ---
 layout: page
 title: How to Create a DFS Backup for Domain-Based Namespace
-permalink: /dfs-backup-domain-namespace/
 description: Step-by-step guide to export domain-based DFS Namespace configuration to XML with logs and validation using dfsutil and PowerShell.
 date: 2026-01-01
 author: Mohit
