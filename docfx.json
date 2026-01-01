@@ -20,8 +20,8 @@
     ],
     "dest": "_site",
     "globalMetadata": {
-      "title": "Windows Server Talks",
-      "description": "Guides by Mohit Maurya"
+      "name": "Windows Server Talks",
+      "description": "DFS, AD, Hyper-V, and PowerShell Guides by Mohit Maurya"
     },
     "template": [
       "default",
