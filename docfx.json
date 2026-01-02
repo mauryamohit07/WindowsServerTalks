@@ -1,22 +1,14 @@
 {
   "metadata": [
     {
-      "src": [
-        {
-          "files": ["docs/**/*.md"],
-          "exclude": ["README.md"]
-        }
-      ],
+      "src": [{"files": ["docs/**/*.md"], "exclude": ["README.md"]}],
       "dest": "api"
     }
   ],
   "build": {
     "content": [
       {
-        "files": [
-          "docs/**/*.md",
-          "docs/toc.yml"
-        ]
+        "files": ["docs/**/*.md", "docs/toc.yml"]
       }
     ],
     "resource": [
@@ -27,26 +19,17 @@
     ],
     "globalMetadata": {
       "_appTitle": "Windows Server Talks",
-      "_appLogoPath": "images/logo.png",
-      "_appFaviconPath": "images/favicon.ico",
-      "_appFooter": "DFS, AD, Hyper-V, PowerShell Guides by Mohit Maurya",
       "name": "Windows Server Talks",
-      "description": "DFS, Active Directory, Hyper‑V, PowerShell Guides",
+      "description": "DFS, AD, Hyper-V, PowerShell Guides",
       "_gitContribute": {
         "repo": "https://github.com/mauryamohit07/WindowsServerTalks",
         "branch": "main"
       },
       "_disableContribution": false,
       "_enableSearch": true,
-      "searchScope": "docs",
       "author": "Mohit Maurya"
     },
-    "template": ["default", "modern"],
-    "dest": "_site",
-    "lints": {
-      "docs-md": {
-        "enabled": false
-      }
-    }
+    "template": ["default"],  // <-- FIXED: default only (sidebar/search work)
+    "dest": "_site"
   }
 }
