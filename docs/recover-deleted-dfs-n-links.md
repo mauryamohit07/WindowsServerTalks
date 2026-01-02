@@ -4,6 +4,7 @@ layout: page
 
 title: "Recover Deleted DFS‑N Links"
 permalink: /recover-deleted-dfs-n-links/
+layout: default
 
 description: Guide to recover deleted DFS Namespace links using Active Directory metadata.
 ---
