@@ -1,29 +1,23 @@
 
-# --- SITE BASICS ---
 title: "Windows Server Talks"
 description: "DFS, Active Directory, Hyper‑V, and PowerShell Guides by Mohit Maurya"
 
-# URL SETTINGS (REQUIRED FOR GITHUB PAGES)
 url: "https://mauryamohit07.github.io"
-baseurl: "/WindowsServerTalks"   # MUST match repository name exactly
+baseurl: "/WindowsServerTalks"   # EXACT repo name
 
-# --- THEME ---
 theme: jekyll-theme-cayman
 markdown: kramdown
 highlighter: rouge
 
-# --- FILES THAT JEKYLL MUST READ INSIDE /docs ---
 include:
   - _includes
   - assets
   - images
 
-# --- COLLECTIONS (OPTIONAL, SAFE) ---
 collections:
   docs:
     output: true
 
-# --- DEFAULT LAYOUT ---
 defaults:
   - scope:
       path: ""
