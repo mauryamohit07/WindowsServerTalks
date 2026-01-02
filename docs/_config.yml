@@ -3,6 +3,11 @@ title: "Windows Server Talks"
 description: "DFS, Active Directory, Hyper‑V, and PowerShell Guides by Mohit Maurya"
 
 theme: jekyll-theme-cayman
+baseurl: "/WindowsServerTalks"
+url: "https://mauryamohit07.github.io"
+
+markdown: kramdown
+theme: jekyll-theme-cayman
 
 markdown: kramdown
 highlighter: rouge
