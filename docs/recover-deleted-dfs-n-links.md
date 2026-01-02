@@ -2,6 +2,7 @@
 ---
 layout: page
 title: Recover Deleted DFS‑N Links
+nav-exclude: false
 permalink: /recover-deleted-dfs-n-links/
 description: Find and restore deleted DFS-N links (msDFS-Linkv2) from AD tombstones; export reports to TXT/CSV; bulk restore from CSV.
 date: 2026-01-01
