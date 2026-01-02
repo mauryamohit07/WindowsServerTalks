@@ -1,8 +1,0 @@
-- name: Home
-  href: index.md
-- name: Backup & Recovery
-  items:
-  - name: Domain-Based DFS-N Auto Backup
-    href: domain-based-dfs-n-auto-backup.md
-  - name: Recover Deleted DFS-N Links
-    href: recover-deleted-dfs-n-links.md
