@@ -4,6 +4,7 @@ domain-based-dfs-n-auto-backup.md
 ---
 layout: page
 title: Domain‑Based DFS‑N Auto Backup
+nav-exclude: false
 permalink: /domain-based-dfs-n-auto-backup/
 description: Step-by-step guide to export domain-based DFS Namespace configuration to XML with logs and validation using dfsutil and PowerShell.
 date: 2026-01-01
