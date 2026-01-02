@@ -7,7 +7,7 @@ domain-based-dfs-n-auto-backup.md
 
 
 title: "Recover Deleted DFS‑N Links"
-permalink: /recover-deleted-dfs-n-links/
+permalink: /domain-based-dfs-n-auto-backup/
 layout: default
 
 
