@@ -1,11 +1,22 @@
 
+title: "Windows Server Talks"
+description: "DFS, Active Directory, Hyper‑V, and PowerShell Guides by Mohit Maurya"
+
 theme: jekyll-theme-cayman
 
-github:
-  is_project_page: true
-
-titles_from_headings:
-  strip_title: true
+markdown: kramdown
+highlighter: rouge
 
 include:
   - "_pages"
+  - "assets"
+
+collections:
+  docs:
+    output: true
+
+sass:
+  style: compressed
+
+github:
+  is_project_page: true
