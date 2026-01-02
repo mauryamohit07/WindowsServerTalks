@@ -1,14 +1,14 @@
 
 ---
 layout: page
-title: Recover Deleted DFS‑N Links
-nav-exclude: false
+title: Recover Deleted DFS‑N Links (msDFS‑Linkv2)
 permalink: /recover-deleted-dfs-n-links/
-description: Find and restore deleted DFS-N links (msDFS-Linkv2) from AD tombstones; export reports to TXT/CSV; bulk restore from CSV.
-date: 2026-01-01
-author: Mohit
-tags: [DFS, DFS-N, Active Directory, Recovery, PowerShell]
+description: Guide to recover deleted DFS Namespace links using Active Directory metadata.
 ---
+
+# Recover Deleted DFS‑N Links (msDFS‑Linkv2)
+
+This guide explains how to recover **deleted DFS‑N links** by restoring AD objects stored in:
 
 
 
