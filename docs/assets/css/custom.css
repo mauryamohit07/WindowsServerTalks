@@ -171,6 +171,24 @@ code {
   }
 }
 
+/* ===== Accessible Skip Link ===== */
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: 10px;
+  background: #0067b8;
+  color: #ffffff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 13px;
+  z-index: 1000;
+}
+
+.skip-link:focus {
+  left: 10px;
+}
+
+
 /* ===== Dark Mode ===== */
 @media (prefers-color-scheme: dark) {
   body {
