@@ -13,48 +13,26 @@
   <!-- Copilot/Fluent-styled CSS (your existing stylesheet) -->
   <link rel="stylesheet" href="https://mauryamohit07.github.io/WindowsServerTalks/assets/css/custom.css">
 
-  <!-- Small site enhancements (copy buttons, lightbox, active link) -->
+  <!-- Small site enhancements (loads shared header + sidebar, copy buttons, lightbox) -->
   <script src="https://mauryamohit07.github.io/WindowsServerTalks/assets/js/site.js" defer></script>
 </head>
 <body>
+  <!-- a11y: Skip link for keyboard users -->
   <a class="skip-link" href="#main-content">Skip to content</a>
 
-  <!-- ===== Fixed Header (as requested) ===== -->
-  <header class="site-header">
-    <div class="container">
-      <h1>Windows Server Talks</h1>
-      <p class="tagline">
-        DFS, Active Directory, Hyper‑V, and PowerShell guides by Mohit Maurya
-      </p>
+  <!-- ===== Shared Header (injected from /assets/includes/header.html) ===== -->
+  <div id="header-container"></div>
 
-      <nav class="breadcrumbs" aria-label="Breadcrumb">
-        <a href="https://mauryamohit07.github.io/WindowsServerTalks/index.html">Home</a>
-        <span aria-hidden="true">›</span>
-        <span aria-current="page">Recover Deleted DFS‑N Links</span>
-      </nav>
-    </div>
-  </header>
+  <!-- ===== Breadcrumbs (page-specific; keep here unless you template it) ===== -->
+  <nav class="breadcrumbs container" aria-label="Breadcrumb">
+    <a href="https://mauryamohit07.github.io/WindowsServerTalks/index.html">Home</a>
+    <span aria-hidden="true">›</span>
+    <span aria-current="page">Recover Deleted DFS‑N Links</span>
+  </nav>
 
   <div class="layout container">
-    <!-- ===== Left pane (slightly grey) ===== -->
-    <nav class="sidebar" aria-label="Primary">
-      <h3>📚 Contents</h3>
-      <ul>
-        <li>
-          <a href="https://mauryamohit07.github.io/WindowsServerTalks/domain-based-dfs-n-auto-backup.html">
-            DFS‑N Auto Backup
-          </a>
-        </li>
-        <li>
-          <a href="https://mauryamohit07.github.io/WindowsServerTalks/recover-deleted-dfs-n-links.html" aria-current="page">
-            Recover Deleted DFS‑N Links
-          </a>
-        </li>
-        <li>
-          <a href="https://mauryamohit07.github.io/WindowsServerTalks/index.html">← Back to Home</a>
-        </li>
-      </ul>
-    </nav>
+    <!-- ===== Shared Sidebar (injected from /assets/includes/sidebar.html) ===== -->
+    <div id="sidebar-container"></div>
 
     <!-- ===== Main content (a little lighter grey) ===== -->
     <main id="main-content" class="content" role="main">
@@ -75,7 +53,9 @@
         recovered using this method.<br>
         <strong>Entire namespace deletion</strong> requires DFS namespace backups.
       </div>
-<div class="spacer"></div>
+
+      <div class="spacer"></div>
+
       <h2 class="step-title">Step 1 — Discover Deleted DFS Namespace Links</h2>
       <p class="step-desc">
         This step queries Active Directory for deleted <code>msDFS-Linkv2</code> objects,
@@ -157,9 +137,9 @@
         </figcaption>
       </figure>
       
-<h2>To restore at bulk. Admin can delete the rows as per date or age which is not required. </h2>
+      <h2>To restore at bulk. Admin can delete the rows as per date or age which is not required. </h2>
 
-    <pre><code class="language-powershell">
+      <pre><code class="language-powershell">
 ***********************************************************************************
 Import-Module ActiveDirectory
 
@@ -207,9 +187,9 @@ foreach ($entry in $Entries) {
 Write-Host "Restore process completed. Log saved to: $LogFile"
 
 ************************************************************
-    </code></pre>  
+      </code></pre>  
       
-      <h2>Above will restore and give output like </h2>
+      <h2>Above will restore and give output like&nbsp;</h2>
       <figure>
         <img class="doc-image"
              src="https://mauryamohit07.github.io/WindowsServerTalks/assets/images/image6.png"
