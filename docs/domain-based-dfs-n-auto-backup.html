@@ -136,7 +136,18 @@
       </figure>
       
       <div class="spacer"></div>
-
+   <p class="step-desc">
+         Execution logs will show like : 
+<figure>
+        <img class="doc-image"
+             src="https://mauryamohit07.github.io/WindowsServerTalks/assets/images/executionlogs.png"
+             alt="Restored DFS links">
+        <figcaption>
+          Restored DFS links visible after successful recovery.
+        </figcaption>
+      </figure>
+   <div class="spacer"></div>  
+      </p>
       <!-- Step 1 -->
       <h2 class="step-title">
         Step 1 — Automated DFS Namespace Backup Script
@@ -145,7 +156,10 @@
         This script automatically discovers all domain‑based DFS namespaces,
         exports each to an XML file, and records both execution and export logs.
       </p>
-
+<p class="step-desc" style="color:#d13438;">
+  **** Disclaimer *****
+  **** Tested in single domain environment****
+</p>
       <pre><code class="language-powershell">
    # ================================
     # DFS Namespace Export Script
