@@ -1,10 +1,14 @@
 /* ==================================================
-   Reset & Base
+   RESET & BASE STYLES
+   Purpose: Normalize layout behavior and set global defaults
 ================================================== */
+
+/* Use border-box so padding/borders don’t affect width calculations */
 * {
   box-sizing: border-box;
 }
 
+/* Base page typography and colors */
 body {
   margin: 0;
   font-family: "Segoe UI", Roboto, Arial, sans-serif;
@@ -13,6 +17,7 @@ body {
   line-height: 1.6;
 }
 
+/* Default link styling */
 a {
   color: #0067b8;
   text-decoration: none;
@@ -21,60 +26,77 @@ a:hover {
   text-decoration: underline;
 }
 
-/* ==================================================
-   Layout Container
-================================================== */
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 24px;
-}
 
 /* ==================================================
-   Header
+   LAYOUT CONTAINER
+   Purpose: Center content and control max readable width
 ================================================== */
+
+.container {
+  max-width: 1200px;     /* readable width on large screens */
+  margin: 0 auto;        /* center horizontally */
+  padding: 0 24px;       /* breathing room on sides */
+}
+
+
+/* ==================================================
+   HEADER
+   Purpose: Top branding area (logo, title, tagline)
+================================================== */
+
 .site-header {
-  background: linear-gradient(90deg, #0067b8, #0a59a8);
+  background: linear-gradient(90deg, #0067b8, #0a59a8); /* brand gradient */
   color: #ffffff;
   padding: 28px 0;
 }
 
+/* Site title */
 .site-header h1 {
   margin: 0;
   font-size: 34px;
 }
 
+/* Subtitle / tagline */
 .site-header .tagline {
   margin-top: 6px;
   font-size: 15px;
   opacity: 0.9;
 }
 
+
 /* ==================================================
-   Breadcrumbs
+   BREADCRUMBS
+   Purpose: Page hierarchy navigation
 ================================================== */
+
 .breadcrumbs {
   font-size: 13px;
   color: #555;
   padding-top: 10px;
 }
 
+/* Breadcrumb links */
 .breadcrumbs a {
   color: #444;
 }
 
+/* Separator (›) */
 .breadcrumbs span[aria-hidden="true"] {
   margin: 0 6px;
   color: #888;
 }
 
+/* Current page indicator */
 .breadcrumbs [aria-current="page"] {
   font-weight: 600;
 }
 
+
 /* ==================================================
-   Main Layout
+   MAIN LAYOUT
+   Purpose: Sidebar + content two-column layout
 ================================================== */
+
 .layout {
   display: flex;
   align-items: flex-start;
@@ -82,16 +104,20 @@ a:hover {
   margin: 20px 0 40px;
 }
 
+
 /* ==================================================
-   Sidebar
+   SIDEBAR
+   Purpose: Left navigation / table of contents
 ================================================== */
+
 .sidebar {
-  position: sticky;
+  position: sticky;       /* stays visible on scroll */
   top: 20px;
   width: 260px;
   flex-shrink: 0;
 }
 
+/* Sidebar heading */
 .sidebar h3 {
   margin: 0 0 12px;
   font-size: 16px;
@@ -99,44 +125,54 @@ a:hover {
   padding-bottom: 6px;
 }
 
+/* Remove bullets and spacing from list */
 .sidebar ul {
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
+/* Individual nav items */
 .sidebar li {
   margin: 10px 0;
   font-size: 14px;
 }
 
+/* Sidebar links */
 .sidebar a {
   display: block;
   padding: 6px 8px;
   border-radius: 4px;
 }
 
+/* Hover highlight */
 .sidebar a:hover {
   background: #eef4fb;
 }
 
+/* Active page highlight */
 .sidebar a.active,
 .sidebar a[aria-current="page"] {
   font-weight: 600;
   color: #004578;
 }
 
+
 /* ==================================================
-   Content Area
+   CONTENT AREA
+   Purpose: Main article body
 ================================================== */
+
 .content {
-  flex: 1;
+  flex: 1; /* fill remaining space */
 }
 
+/* Remove top margin on first element */
 .content > *:first-child {
   margin-top: 0;
 }
 
+/* Section headings */
 .content h2 {
   font-size: 20px;
   margin-bottom: 12px;
@@ -144,21 +180,26 @@ a:hover {
   border-left: 4px solid #0067b8;
 }
 
-.content p,
-.content ul {
+/* Paragraphs & lists as content cards */
+.content > p,
+.content > ul {
   background: #f7f7f7;
   padding: 16px 20px;
   border-radius: 6px;
   margin-bottom: 16px;
 }
 
+/* Indentation for lists */
 .content ul {
   padding-left: 40px;
 }
 
+
 /* ==================================================
-   Reusable Cards
+   REUSABLE CARDS
+   Purpose: Highlight blocks (home cards, info blocks)
 ================================================== */
+
 .card {
   background: #f7f7f7;
   padding: 16px;
@@ -167,13 +208,17 @@ a:hover {
   transition: box-shadow 0.2s ease;
 }
 
+/* Elevation on hover */
 .card:hover {
   box-shadow: 0 4px 12px rgba(0,0,0,0.08);
 }
 
+
 /* ==================================================
-   Documentation Images
+   DOCUMENTATION IMAGES
+   Purpose: Consistent screenshot styling
 ================================================== */
+
 .doc-image {
   max-width: 100%;
   height: auto;
@@ -184,9 +229,12 @@ a:hover {
   cursor: zoom-in;
 }
 
+
 /* ==================================================
-   Code Blocks + Copy Button
+   CODE BLOCKS + COPY BUTTON
+   Purpose: Developer-friendly code samples
 ================================================== */
+
 pre {
   background: #1e1e1e;
   color: #d4d4d4;
@@ -197,14 +245,17 @@ pre {
   margin-bottom: 16px;
 }
 
+/* Inline code font */
 code {
   font-family: Consolas, "Courier New", monospace;
 }
 
+/* Wrapper for copy button positioning */
 .code-wrap {
   position: relative;
 }
 
+/* Copy button */
 .copy-btn {
   position: absolute;
   top: 8px;
@@ -218,18 +269,23 @@ code {
   cursor: pointer;
 }
 
+/* Hover state */
 .copy-btn:hover {
   background: #444;
 }
 
+/* Success state */
 .copy-btn.copied {
   background: #1b7f1b;
   border-color: #1b7f1b;
 }
 
+
 /* ==================================================
-   Lightbox (Click to Zoom)
+   LIGHTBOX (IMAGE ZOOM)
+   Purpose: Click-to-zoom screenshots
 ================================================== */
+
 .lightbox-backdrop {
   position: fixed;
   inset: 0;
@@ -249,9 +305,12 @@ code {
   cursor: zoom-out;
 }
 
+
 /* ==================================================
-   Footer
+   FOOTER
+   Purpose: Site metadata and copyright
 ================================================== */
+
 .site-footer {
   background: #f3f3f3;
   padding: 18px 0;
@@ -260,9 +319,12 @@ code {
   text-align: center;
 }
 
+
 /* ==================================================
-   Responsive
+   RESPONSIVE DESIGN
+   Purpose: Mobile & tablet behavior
 ================================================== */
+
 @media (max-width: 900px) {
   .layout {
     flex-direction: column;
@@ -274,47 +336,12 @@ code {
   }
 }
 
-/* ==================================================
-   Dark Mode
-================================================== */
-@media (prefers-color-scheme: dark) {
-  body {
-    background: #1f1f1f;
-    color: #eaeaea;
-  }
-
-  .breadcrumbs {
-    color: #bbb;
-  }
-
-  .breadcrumbs a {
-    color: #ddd;
-  }
-
-  .content p,
-  .content ul,
-  .card {
-    background: #2b2b2b;
-  }
-
-  .site-footer {
-    background: #2b2b2b;
-    color: #aaa;
-  }
-
-  .copy-btn {
-    background: #2f2f2f;
-    border-color: #3a3a3a;
-  }
-
-  .copy-btn:hover {
-    background: #3b3b3b;
-  }
-}
 
 /* ==================================================
-   Accessibility: Skip Link
+   ACCESSIBILITY – SKIP LINK
+   Purpose: Keyboard navigation support
 ================================================== */
+
 .skip-link {
   position: absolute;
   left: -999px;
@@ -327,382 +354,7 @@ code {
   z-index: 1000;
 }
 
+/* Make skip link visible when focused */
 .skip-link:focus {
   left: 10px;
-}
-
-/* === Copilot / Fluent-inspired theme overrides ======================= */
-/* Palette (Light):
-   Primary (Header): #0F6CBD (Fluent blue 60)
-   Primary Darker (Hover/Accent): #115EA3
-   Sidebar bg: #F3F2F1 (Warm neutral 20)
-   Content bg: #F7F7F7 (Neutral 20+) – slightly lighter than sidebar
-   Card bg: #FFFFFF on light grey canvas for elevation
-   Text: #1F1F1F / Links: #0F6CBD
-*/
-
-/* Base link color to match header */
-a { color: #0F6CBD; }
-a:hover { color: #115EA3; text-decoration: underline; }
-
-/* Header: solid Copilot/Fluent blue with slight gradient depth */
-.site-header {
-  background: linear-gradient(90deg, #0F6CBD 0%, #115EA3 100%);
-  color: #FFFFFF;
-  padding: 24px 0;           /* slightly tighter */
-  box-shadow: 0 1px 0 rgba(0,0,0,0.06);
-}
-.site-header h1 {
-  font-size: 32px;           /* consistent with Fluent sizes */
-  letter-spacing: 0.2px;
-  margin: 0;
-}
-.site-header .tagline {
-  margin-top: 6px;
-  font-size: 14px;
-  opacity: .95;
-}
-
-/* Breadcrumbs: softer neutrals */
-.breadcrumbs {
-  font-size: 13px;
-  color: #605E5C;
-  padding-top: 10px;
-}
-.breadcrumbs a { color: #4A4A4A; }
-.breadcrumbs span[aria-hidden="true"] { color: #8A8886; }
-
-/* Layout spacing */
-.layout {
-  gap: 28px;
-  margin: 18px 0 36px;
-}
-
-/* Sidebar: slightly grey */
-.sidebar {
-  background: #F3F2F1;       /* slightly grey */
-  border: 1px solid #E1DFDD;
-  border-radius: 8px;
-  padding: 16px;
-  width: 260px;
-}
-.sidebar h3 {
-  border-bottom-color: #E1DFDD;
-  padding-bottom: 8px;
-}
-.sidebar a {
-  color: #323130;
-  padding: 8px 10px;
-  border-radius: 6px;
-}
-.sidebar a:hover {
-  background: #EDEBE9;       /* hover state within the grey pane */
-}
-.sidebar a.active,
-.sidebar a[aria-current="page"] {
-  color: #0F6CBD;
-  background: #E5F0FA;       /* subtle selection background */
-  font-weight: 600;
-  outline: 2px solid transparent;
-}
-
-/* Main content: a little less grey than sidebar */
-.content {
-  background: #F7F7F7;       /* lighter than #F3F2F1 */
-  border: 1px solid #EEE;
-  border-radius: 10px;
-  padding: 20px;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.04);
-}
-.content > *:first-child { margin-top: 0; }
-.content h2 {
-  border-left: 4px solid #0F6CBD;
-  padding-left: 10px;
-  margin-top: 8px;
-}
-/* Paragraphs/lists: put them on white cards for contrast on grey canvas */
-.content p,
-.content ul,
-.card {
-  background: #FFFFFF;
-  border: 1px solid #EDEBE9;
-  border-radius: 8px;
-  padding: 16px 18px;
-}
-
-/* Code blocks: keep dark theme but soften controls */
-pre {
-  background: #1F1F1F;
-  color: #EDEBE9;
-  border-radius: 8px;
-}
-.copy-btn {
-  background: #2B2B2B;
-  border-color: #3A3A3A;
-  color: #FFFFFF;
-}
-.copy-btn:hover { background: #383838; }
-.copy-btn.copied {
-  background: #107C10;       /* Fluent success */
-  border-color: #107C10;
-}
-
-/* Images: softer border on grey canvas */
-.doc-image {
-  border-color: #E1DFDD;
-}
-
-/* Footer: match neutrals */
-.site-footer {
-  background: #F3F2F1;
-  color: #605E5C;
-  border-top: 1px solid #E1DFDD;
-}
-
-/* Focus styles (keyboard a11y) */
-a:focus,
-button:focus,
-.sidebar a:focus {
-  outline: 2px solid #0F6CBD;
-  outline-offset: 2px;
-  border-radius: 6px;
-}
-
-/* Responsive: keep padding coherent */
-@media (max-width: 900px) {
-  .sidebar {
-    width: 100%;
-    position: relative;
-  }
-  .content {
-    padding: 16px;
-  }
-}
-
-/* === Dark Mode ======================================================== */
-/* Palette (Dark):
-   Canvas: #1F1F1F
-   Sidebar: #252423
-   Content: #1E1E1E (slightly lighter than sidebar)
-   Text: #F3F2F1
-   Accents: #5EB4FF / #0F6CBD borders
-*/
-@media (prefers-color-scheme: dark) {
-  body {
-    background: #1F1F1F;
-    color: #F3F2F1;
-  }
-  .sidebar {
-    background: #252423;            /* darker (slightly grey) left pane */
-    border-color: #3B3A39;
-  }
-  .sidebar a { color: #EDEBE9; }
-  .sidebar a:hover { background: #2E2D2C; }
-  .sidebar a.active,
-  .sidebar a[aria-current="page"] {
-    background: rgba(15,108,189,0.20);
-    color: #A7D8FF;
-  }
-
-  .content {
-    background: #1E1E1E;            /* little less grey than sidebar */
-    border-color: #323130;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.5);
-  }
-  .content p,
-  .content ul,
-  .card {
-    background: #252525;
-    border-color: #383838;
-  }
-  .site-footer {
-    background: #252423;
-    color: #C8C6C4;
-    border-top-color: #3B3A39;
-  }
-  .breadcrumbs { color: #C8C6C4; }
-  .breadcrumbs a { color: #E1DFDD; }
-  .doc-image { border-color: #3B3A39; }
-  .copy-btn { background: #2F2F2F; border-color: #3A3A3A; }
-  .copy-btn:hover { background: #3B3B3B; }
-}
-
-/* ==================================================
-   Header breadcrumb & link color FIX (force white)
-================================================== */
-.site-header,
-.site-header h1,
-.site-header .tagline,
-.site-header a,
-.site-header .breadcrumbs,
-.site-header .breadcrumbs a,
-.site-header .breadcrumbs span,
-.site-header .breadcrumbs [aria-current="page"] {
-  color: #ffffff;
-}
-
-/* Optional hover state */
-.site-header .breadcrumbs a:hover {
-  text-decoration: underline;
-  opacity: 0.85;
-}
-/* ==================================================
-  for spacer
-================================================== */
-.spacer {
-  height: 32px; /* adjust as needed */
-}
-/* Make the main layout row full-width, without changing header/footer containers */
-.layout.container {
-  max-width: none;     /* remove the 1200px cap */
-  width: 100%;
-  padding-left: 24px;  /* keep your side padding */
-  padding-right: 24px;
-}
-
-/* Ensure the content flexes to fill remaining space next to the sidebar */
-.content {
-  flex: 1 1 auto;
-  min-width: 0;        /* prevents overflow issues with code blocks */
-}
-/* ===== Brand row in header (logo + text) ===== */
-.brand {
-  display: flex;
-  align-items: center;   /* vertically center logo with text */
-  gap: 14px;             /* space between logo and text */
-}
-
-/* Logo size/behavior */
-.brand-logo img {
-  height: 80px;          /* adjust: 40–56px works well */
-  width: auto;
-  display: block;
-  object-fit: contain;
-}
-
-/* Ensure H1/tagline keep your existing white colors */
-.site-header h1 {
-  margin: 0;
-  font-size: 34px;       /* or 32px to match your theme */
-  color: #fff;
-}
-.site-header .tagline {
-  margin-top: 4px;
-  font-size: 14px;
-  color: #fff;
-  opacity: .95;
-}
-
-/* Breadcrumbs remain on their own line under the brand */
-.site-header .breadcrumbs {
-  margin-top: 8px;       /* a little space below brand */
-}
-
-/* Responsive: slightly smaller logo on narrow viewports */
-@media (max-width: 600px) {
-  .brand-logo img { height: 40px; }
-}
-
-
-/* Clickable home cards */
-.card-link {
-  display: block;
-  color: inherit;
-  text-decoration: none;
-}
-
-.card-link:hover {
-  text-decoration: none;
-}
-
-/* Horizontal layout */
-.card-row {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-
-/* Icon */
-.card-icon {
-  width: 48px;
-  height: 48px;
-  flex-shrink: 0;
-}
-
-/* Text spacing */
-.card-text h3 {
-  margin: 0 0 4px 0;
-}
-
-.card-text p {
-  margin: 0;
-}
-/* Put card title and description on the same line */
-.card-inline {
-  display: flex;
-  align-items: baseline;   /* aligns text nicely */
-  gap: 10px;
-}
-
-.card-inline h3 {
-  margin: 0;
-  white-space: nowrap;     /* keeps title on one line */
-}
-
-.card-inline p {
-  margin: 0;
-}
-
-.card-inline span {
-  color: #605E5C;
-  font-size: 14px;
-}
-
-/* ===== Sidebar search (below "📚 Contents") ===== */
-.sidebar-search {
-  position: relative;
-  margin: 8px 0 12px;
-}
-
-.sidebar-search input[type="search"] {
-  width: 100%;
-  padding: 8px 28px 8px 10px; /* room for clear button on the right */
-  border: 1px solid #E1DFDD;
-  border-radius: 6px;
-  background: #fff;
-  font-size: 14px;
-}
-
-.sidebar-search input[type="search"]:focus {
-  outline: 2px solid #0F6CBD;
-  outline-offset: 2px;
-}
-
-.sidebar-search .sidebar-search-clear {
-  position: absolute;
-  right: 6px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 22px;
-  height: 22px;
-  line-height: 20px;
-  text-align: center;
-  border: 1px solid transparent;
-  background: transparent;
-  color: #605E5C;
-  border-radius: 50%;
-  cursor: pointer;
-  visibility: hidden; /* toggled by JS */
-}
-
-.sidebar-search .sidebar-search-clear:hover {
-  background: #EDEBE9;
-}
-
-/* Highlight style inside links */
-.sidebar a mark {
-  background: #FFF1B6;   /* soft yellow */
-  color: inherit;
-  padding: 0 2px;
-  border-radius: 3px;
 }
