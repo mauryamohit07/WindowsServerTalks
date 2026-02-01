@@ -1,25 +1,15 @@
+title: Windows Server Talks
+description: DFS, Active Directory, Hyper-V, and PowerShell guides by Mohit Maurya
+theme: null
+remote_theme: just-the-docs/just-the-docs
 
-title: "Windows Server Talks"
-description: "DFS, Active Directory, Hyper‑V, and PowerShell Guides by Mohit Maurya"
+# For project pages, set the baseurl to the repository name (with correct case)
+baseurl: "/WindowsServerTalks"
 
-url: "https://mauryamohit07.github.io"
-baseurl: "/WindowsServerTalks"   # EXACT repo name
+# Optional: enable search
+just_the_docs:
+  search_enabled: true
 
-theme: jekyll-theme-cayman
-markdown: kramdown
-highlighter: rouge
-
-include:
-  - _includes
-  - assets
-  - images
-
-collections:
-  docs:
-    output: true
-
-defaults:
-  - scope:
-      path: ""
-    values:
-      layout: "default"
+# Needed for remote_theme on GitHub Pages
+plugins:
+  - jekyll-remote-theme
