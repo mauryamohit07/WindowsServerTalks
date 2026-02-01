@@ -1,14 +1,15 @@
 ---
-nav-exclude: false
+layout: default
 title: Home
+nav-exclude: false
 ---
 
 # Windows Server Talks
 
-DFS, Active Directory, Hyper-V, and PowerShell guides by Mohit Maurya.
+DFS, Active Directory, Hyper‑V, and PowerShell guides by Mohit Maurya.
 
-Use the sidebar for navigation and search above.
+Use the sidebar for navigation.
 
 ## Quick Links
-- [DFS-N Auto Backup](./domain-based-dfs-n-auto-backup.md)
-- [Recover Deleted DFS-N Links](./recover-deleted-dfs-n-links.md)
+- [DFS‑N Auto Backup]({{ site.baseurl }}/domain-based-dfs-n-auto-backup/)
+- [Recover Deleted DFS‑N Links]({{ site.baseurl }}/recover-deleted-dfs-n-links/)
