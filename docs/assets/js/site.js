@@ -57,3 +57,22 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+  const sidebar = document.getElementById("sidebar-container");
+  if (sidebar) {
+    fetch("/WindowsServerTalks/assets/includes/sidebar.html")
+      .then(res => res.text())
+      .then(html => {
+        sidebar.innerHTML = html;
+
+        // Highlight current page
+        const links = sidebar.querySelectorAll("a");
+        links.forEach(link => {
+          if (link.href === window.location.href) {
+            link.setAttribute("aria-current", "page");
+          }
+        });
+      });
+  }
+});
