@@ -1,247 +1,332 @@
 /* ==================================================
    Reset & Base
 ================================================== */
-* { box-sizing: border-box; }
-
-html, body { margin: 0; padding: 0; }
-
-:root{
-  --brand-500: #0067b8;
-  --brand-600: #0a59a8;
-  --text: #1f1f1f;
-  --muted: #555;
-  --muted-2: #888;
-  --border: #e5e7eb;
-  --surface: #ffffff;  /* <-- white everywhere below header */
-  --shadow: 0 1px 2px rgba(0,0,0,0.04);
+* {
+  box-sizing: border-box;
 }
 
-body{
+body {
+  margin: 0;
   font-family: "Segoe UI", Roboto, Arial, sans-serif;
-  background: var(--surface) !important;    /* <-- force white page */
-  color: var(--text);
+  background-color: #ffffff;
+  color: #1f1f1f;
   line-height: 1.6;
 }
 
-a { color: var(--brand-500); text-decoration: none; }
-a:hover { text-decoration: underline; }
-
-/* ==================================================
-   Header (blue only at the top)
-================================================== */
-.site-header{
-  background: linear-gradient(90deg, var(--brand-500), var(--brand-600));
-  color: #fff;
-  padding: 22px 0;
-  margin: 0 0 16px 0;                  /* breathing space below header */
-  box-shadow: 0 1px 0 rgba(0,0,0,0.05);
+a {
+  color: #0067b8;
+  text-decoration: none;
 }
-.site-header .container{ max-width: 1200px; margin: 0 auto; padding: 0 16px; }
-.site-header h1{ margin: 0; font-size: 30px; }
-.site-header .tagline{ margin: 4px 0 0; font-size: 14px; opacity: .9; }
+a:hover {
+  text-decoration: underline;
+}
 
 /* ==================================================
-   Container + Breadcrumbs
+   Layout Container
 ================================================== */
-.container{ max-width: 1200px; margin: 0 auto; padding: 0 16px; }
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
 
-.breadcrumbs{
+/* ==================================================
+   Header
+================================================== */
+.site-header {
+  background: linear-gradient(90deg, #0067b8, #0a59a8);
+  color: #ffffff;
+  padding: 28px 0;
+}
+
+.site-header h1 {
+  margin: 0;
+  font-size: 34px;
+}
+
+.site-header .tagline {
+  margin-top: 6px;
+  font-size: 15px;
+  opacity: 0.9;
+}
+
+/* ==================================================
+   Breadcrumbs
+================================================== */
+.breadcrumbs {
   font-size: 13px;
-  color: var(--muted);
-  padding: 6px 0 0;
+  color: #555;
+  padding-top: 10px;
 }
-.breadcrumbs a{ color: #2f2f2f; }
-.breadcrumbs span[aria-hidden="true"]{ margin: 0 6px; color: var(--muted-2); }
-.breadcrumbs [aria-current="page"]{ font-weight: 600; }
+
+.breadcrumbs a {
+  color: #444;
+}
+
+.breadcrumbs span[aria-hidden="true"] {
+  margin: 0 6px;
+  color: #888;
+}
+
+.breadcrumbs [aria-current="page"] {
+  font-weight: 600;
+}
 
 /* ==================================================
-   Layout: white app canvas (no blue)
+   Main Layout
 ================================================== */
-.layout{
+.layout {
   display: flex;
   align-items: flex-start;
-  gap: 20px;
-  margin: 0 auto 28px;
-  max-width: 1200px;
-  padding: 0 16px;
-  background: var(--surface);          /* <-- white behind everything */
+  gap: 32px;
+  margin: 20px 0 40px;
 }
 
 /* ==================================================
-   Sidebar: white card
+   Sidebar
 ================================================== */
-.sidebar{
+.sidebar {
+  position: sticky;
+  top: 20px;
   width: 260px;
   flex-shrink: 0;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 14px;
-  box-shadow: var(--shadow);
-  position: sticky;
-  top: 18px;
 }
-.sidebar h3{
-  margin: 0 0 10px;
+
+.sidebar h3 {
+  margin: 0 0 12px;
+  font-size: 16px;
+  border-bottom: 2px solid #e5e5e5;
+  padding-bottom: 6px;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar li {
+  margin: 10px 0;
   font-size: 14px;
-  font-weight: 600;
-  color: #111827;
 }
-.sidebar ul{ list-style: none; padding: 0; margin: 0; }
-.sidebar li{ margin: 8px 0; }
-.sidebar a{
+
+.sidebar a {
   display: block;
-  padding: 8px 10px;
-  border-radius: 8px;
-  color: #111827;
+  padding: 6px 8px;
+  border-radius: 4px;
 }
-.sidebar a:hover{ background: #eef4fb; }
+
+.sidebar a:hover {
+  background: #eef4fb;
+}
+
 .sidebar a.active,
-.sidebar a[aria-current="page"]{ font-weight: 600; color: #004578; }
+.sidebar a[aria-current="page"] {
+  font-weight: 600;
+  color: #004578;
+}
 
 /* ==================================================
-   Content: white card
+   Content Area
 ================================================== */
-.content{
+.content {
   flex: 1;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 24px 28px;
-  box-shadow: var(--shadow);
 }
-.content > *:first-child{ margin-top: 0; }
 
-.content h2{
+.content > *:first-child {
+  margin-top: 0;
+}
+
+.content h2 {
   font-size: 20px;
-  font-weight: 700;
-  margin: 22px 0 12px;
-  padding-left: 10px;
-  border-left: 4px solid var(--brand-500);
+  margin-bottom: 12px;
+  padding-left: 8px;
+  border-left: 4px solid #0067b8;
 }
 
-/* Normal reading flow: no gray slabs behind paragraphs */
 .content p,
-.content ul{
-  background: transparent !important;
-  padding: 0 !important;
-  margin: 0 0 14px;
+.content ul {
+  background: #f7f7f7;
+  padding: 16px 20px;
+  border-radius: 6px;
+  margin-bottom: 16px;
 }
-.content ul{ padding-left: 24px; }
 
-/* Callouts / Summary / Cards: subtle */
-.card,
-.summary-box,
-.callout{
-  background: #f7f9fc;
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 14px 16px;
-  margin: 12px 0 16px;
+.content ul {
+  padding-left: 40px;
 }
-.summary-box{ border-left: 4px solid var(--brand-500); }
-.callout.warning{ background: #fff8eb; border-left: 4px solid #ffb454; }
 
 /* ==================================================
-   Images & Lightbox
+   Reusable Cards
 ================================================== */
-.doc-image{
+.card {
+  background: #f7f7f7;
+  padding: 16px;
+  border-radius: 6px;
+  margin-bottom: 12px;
+  transition: box-shadow 0.2s ease;
+}
+
+.card:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+/* ==================================================
+   Documentation Images
+================================================== */
+.doc-image {
   max-width: 100%;
   height: auto;
   display: block;
-  margin: 10px auto;
-  border-radius: 8px;
-  border: 1px solid #e5e7eb;
+  margin: 12px auto;
+  border-radius: 6px;
+  border: 1px solid #ddd;
   cursor: zoom-in;
 }
-.lightbox-backdrop{
-  position: fixed; inset: 0;
-  background: rgba(0,0,0,0.8);
-  display: flex; align-items: center; justify-content: center;
-  padding: 24px; z-index: 10000;
+
+/* ==================================================
+   Code Blocks + Copy Button
+================================================== */
+pre {
+  background: #1e1e1e;
+  color: #d4d4d4;
+  padding: 16px;
+  border-radius: 6px;
+  overflow-x: auto;
+  font-size: 13px;
+  margin-bottom: 16px;
 }
-.lightbox-backdrop img{
-  max-width: 90vw; max-height: 90vh;
-  border-radius: 10px;
+
+code {
+  font-family: Consolas, "Courier New", monospace;
+}
+
+.code-wrap {
+  position: relative;
+}
+
+.copy-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  padding: 6px 10px;
+  font-size: 12px;
+  border: 1px solid #2b2b2b;
+  background: #333;
+  color: #ffffff;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.copy-btn:hover {
+  background: #444;
+}
+
+.copy-btn.copied {
+  background: #1b7f1b;
+  border-color: #1b7f1b;
+}
+
+/* ==================================================
+   Lightbox (Click to Zoom)
+================================================== */
+.lightbox-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  z-index: 10000;
+}
+
+.lightbox-backdrop img {
+  max-width: 90vw;
+  max-height: 90vh;
+  border-radius: 8px;
   box-shadow: 0 12px 40px rgba(0,0,0,0.35);
   cursor: zoom-out;
 }
 
 /* ==================================================
-   Code blocks + Copy
-================================================== */
-pre{
-  background: #111827;
-  color: #e5e7eb;
-  padding: 16px;
-  border-radius: 10px;
-  overflow-x: auto;
-  font-size: 13px;
-  margin: 14px 0 18px;
-  border: 1px solid #0b1220;
-}
-code{ font-family: Consolas, "Courier New", monospace; }
-
-.code-wrap{ position: relative; }
-.copy-btn{
-  position: absolute; top: 8px; right: 8px;
-  padding: 6px 10px; font-size: 12px;
-  border: 1px solid #2b2b2b; background: #333; color: #fff;
-  border-radius: 6px; cursor: pointer;
-}
-.copy-btn:hover{ background: #444; }
-.copy-btn.copied{ background: #1b7f1b; border-color: #1b7f1b; }
-
-/* ==================================================
    Footer
 ================================================== */
-.site-footer{
-  background: #f3f4f6;
-  border-top: 1px solid var(--border);
+.site-footer {
+  background: #f3f3f3;
   padding: 18px 0;
   font-size: 13px;
   color: #555;
   text-align: center;
-  margin-top: 24px;
 }
 
 /* ==================================================
    Responsive
 ================================================== */
-@media (max-width: 1024px){
-  .layout{ gap: 16px; }
-  .sidebar{ width: 230px; }
-}
-@media (max-width: 900px){
-  .layout{ flex-direction: column; padding: 0 12px; }
-  .sidebar{ width: 100%; position: static; }
-  .content{ padding: 20px; }
+@media (max-width: 900px) {
+  .layout {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    position: relative;
+  }
 }
 
 /* ==================================================
-   Dark mode (keeps the same logic)
+   Dark Mode
 ================================================== */
-@media (prefers-color-scheme: dark){
-  :root{
-    --surface: #111827;
-    --text: #e5e7eb;
-    --border: #1f2937;
+@media (prefers-color-scheme: dark) {
+  body {
+    background: #1f1f1f;
+    color: #eaeaea;
   }
-  body{ background: var(--surface) !important; color: var(--text); }
-  .layout{ background: var(--surface); }
-  .sidebar, .content{ background: var(--surface); border-color: var(--border); box-shadow: 0 1px 1px rgba(0,0,0,0.25); }
-  .card, .summary-box, .callout{ background: #1f2937; border-color: #263244; }
-  .site-footer{ background: #0b1220; color: #9ca3af; border-top-color: #1f2937; }
-  pre{ background: #0b1220; color: #e5e7eb; border-color: #101827; }
+
+  .breadcrumbs {
+    color: #bbb;
+  }
+
+  .breadcrumbs a {
+    color: #ddd;
+  }
+
+  .content p,
+  .content ul,
+  .card {
+    background: #2b2b2b;
+  }
+
+  .site-footer {
+    background: #2b2b2b;
+    color: #aaa;
+  }
+
+  .copy-btn {
+    background: #2f2f2f;
+    border-color: #3a3a3a;
+  }
+
+  .copy-btn:hover {
+    background: #3b3b3b;
+  }
 }
 
 /* ==================================================
    Accessibility: Skip Link
 ================================================== */
-.skip-link{
-  position: absolute; left: -999px; top: 10px;
-  background: var(--brand-500); color: #ffffff;
-  padding: 6px 10px; border-radius: 4px; font-size: 13px;
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: 10px;
+  background: #0067b8;
+  color: #ffffff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 13px;
   z-index: 1000;
 }
-.skip-link:focus{ left: 10px; }
+
+.skip-link:focus {
+  left: 10px;
+}
