@@ -1,156 +1,113 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title><!-- PAGE TITLE --> Sample Doc Title · Windows Server Talks</title>
+<!-- ======================================================= -->
+<!-- Wireless UI Mapping (1–20): Validated with screenshots -->
+<!-- ======================================================= -->
 
-  <!-- Theme color for mobile address bar -->
-  <meta name="theme-color" content="#0F6CBD">
+<h2 id="ui-mapping">Wireless UI Mapping (1–20)</h2>
 
-  <!-- Site Styles -->
-  <link rel="stylesheet" href="https://mauryamohit07.github.io/WindowsServerTalks/assets/css/custom.css">
+<!-- ================== -->
+<!-- Callouts 1–4 -->
+<!-- ================== -->
+<figure>
+  https://mauryamohit07.github.io/WindowsServerTalks/assets/images/wirelessprofileimage1.png
+  <figcaption>New Profile properties — Security tab (Callouts 1–4)</figcaption>
+</figure>
 
-  <!-- Shared site enhancements (header + sidebar injection, copy buttons, lightbox, etc.) -->
-  <script src="https://mauryamohit07.github.io/WindowsServerTalks/assets/js/site.js" defer></script>
-</head>
-<body>
-  <!-- a11y: Skip link for keyboard users -->
-  <a class="skip-link" href="#main-content">Skip to content</a>
+<ol start="1">
+  <li>This section defines the security methods for your wireless profile.</li>
+  <li>This section defines the authentication methods and authentication mode for your wireless profile.</li>
+  <li>The option "max authentication failures" specifies the maximum number of authentication failures that are allowed before the client is disconnected from the wireless network.</li>
+  <li>"Cache user information for subsequent connections to this network" allows the device to store the user's login credentials for a wireless network, so that the user does not have to enter their credentials every time they connect to the network.</li>
+</ol>
 
-  <!-- ===== Shared Header (injected from /assets/includes/header.html) ===== -->
-  <div id="header-container"></div>
+<div class="spacer"></div>
 
-  <!-- ===== Breadcrumbs (edit for this page) ===== -->
-  <nav class="breadcrumbs container" aria-label="Breadcrumb">
-    <a href="https://mauryamohit07.github.io/WindowsServerTalks/index.html">Home</a>
-    <span aria-hidden="true">›</span>
-    <span aria-current="page"><!-- BREADCRUMB LABEL --> Sample Doc Title</span>
-  </nav>
+<!-- ================== -->
+<!-- Callouts 5–9 -->
+<!-- ================== -->
+<figure>
+  https://mauryamohit07.github.io/WindowsServerTalks/assets/images/wirelessprofileimage2.png
+  <figcaption>Protected EAP Properties (Callouts 5–9)</figcaption>
+</figure>
 
-  <div class="layout container">
-    <!-- ===== Shared Sidebar (injected from /assets/includes/sidebar.html) ===== -->
-    <div id="sidebar-container"></div>
+<ol start="5">
+  <li>
+    If you check this option, client will verify the server’s identity by validating the certificate presented by the server during the authentication process. This helps ensure that the client is connecting to the intended server and not an imposter. If the certificate is not valid or cannot be verified, the client will not connect to the network. If you uncheck it, the client will connect to the network without verifying the identity of the server.
+  </li>
+  <li>You need to check the Trusted Root CA here.</li>
+  <li>
+    “Don’t ask user to authorize new servers or trusted CAs” means that the user will not be prompted to authorize new servers or trusted certification authorities when connecting to a wireless network.
+  </li>
+  <li>You can choose different authentication method here. (PEAP‑TLS or PEAP‑MSCHAPv2)</li>
+  <li>
+    “Enable fast reconnect” allows the device to quickly reconnect to a previously connected wireless network.
+    <br>
+    “Disconnect if server does not present cryptobinding TLV” specifies whether to disconnect from a wireless network if the server does not present a cryptobinding TLV.
+    <br>
+    “Enable Identity Privacy” allows the device to use a randomized MAC address when connecting to a wireless network, which helps protect the user’s privacy by preventing the network from tracking the device based on its MAC address.
+  </li>
+</ol>
 
-    <!-- ===== Main content ===== -->
-    <main id="main-content" class="content" role="main">
-      <!-- Page Heading -->
-      <h2 class="page-title"><!-- H1/H2 TITLE --> Sample Doc Title</h2>
-      <p class="page-subtitle"><!-- SUBTITLE --> Concise description or tagline goes here</p>
+<div class="spacer"></div>
 
-      <!-- Summary / TL;DR -->
-      <section class="summary-box">
-        <h3>Summary</h3>
-        <p>
-          <!-- SHORT SUMMARY -->
-          Replace this text with 2–3 lines describing what this page covers and who it’s for.
-        </p>
-      </section>
+<!-- ================== -->
+<!-- Callouts 10–15 -->
+<!-- ================== -->
+<figure>
+  https://mauryamohit07.github.io/WindowsServerTalks/assets/images/wirelessprofileimage3.png
+  <figcaption>Smart Card or other Certificate Properties (Callouts 10–15)</figcaption>
+</figure>
 
-      <!-- Callouts (change class: info | success | warning | danger ) -->
-      <div class="callout info">
-        <strong>Note:</strong> Replace this callout content with a helpful tip or prerequisite.
-      </div>
+<ol start="10">
+  <li>This section defines how you choose smart card or certificate when doing authentication. You can go to Advanced for more selections.</li>
+  <li>
+    If you check this option, client will verify the server’s identity by validating the certificate presented by the server during the authentication process. This helps ensure that the client is connecting to the intended server and not an imposter. If the certificate is not valid or cannot be verified, the client will not connect to the network. If you uncheck it, the client will connect to the network without verifying the identity of the server.
+  </li>
+  <li>
+    List the server name of RADIUS server that you allow client to connect. The RADIUS servers that are not listed are untrusted and client will not connect to them.
+    <br>
+    It is not necessary to list.
+  </li>
+  <li>
+    If you do not check anything here, the certificates issued by Trusted Root CAs in NTAuth store will be used for authentication.
+    <br>
+    If you check specific Trusted Root CAs, only certificates issued by selected Root CAs will be used for authentication. And no need to use NTAuth store.
+    <br>
+    It is recommended to select same Trusted Root CAs here and in Advanced settings.
+  </li>
+  <li>
+    If you uncheck this option, when certificate authentication is failed, the user will be prompted to choose to authorize certificate and continue connecting to new servers.
+    <br>
+    If you check this option, the user will not be prompted to authorize new servers or trusted certification authorities and fail the connection without notification.
+  </li>
+  <li>
+    This option allows the user to specify a different username to use when connecting to a wireless network, instead of the default username associated with the user’s account.
+  </li>
+</ol>
 
-      <div class="spacer"></div>
+<div class="spacer"></div>
 
-      <!-- Step/Section 1 -->
-      <h2 class="step-title">Step 1 — <!-- EDIT --> Add a clear actionable heading</h2>
-      <p class="step-desc">
-        <!-- DESCRIPTION -->
-        Briefly explain what happens in this step. Keep it actionable and scannable.
-      </p>
+<!-- ================== -->
+<!-- Callouts 16–20 -->
+<!-- ================== -->
+<figure>
+  https://mauryamohit07.github.io/WindowsServerTalks/assets/images/wirelessprofileimage4.png
+  <figcaption>Configure Certificate Selection (Callouts 16–20)</figcaption>
+</figure>
 
-      <!-- Placeholder Code Block -->
-      <pre><code class="language-powershell">
-# PLACEHOLDER: PowerShell snippet
-# Replace with your script or commands
-Write-Host "Hello from the sample template!"
-      </code></pre>
-
-      <!-- Placeholder Image (Figure 1) -->
-      <h2>Example Output</h2>
-      <figure>
-        <!-- Replace src with your image URL -->
-        <img class="doc-image"
-             src="https://via.placeholder.com/1200x650.png?text=Sample+Image+Placeholder"
-             alt="Describe what this image shows for accessibility">
-        <figcaption>
-          <!-- CAPTION -->
-          Short caption explaining the screenshot or diagram.
-        </figcaption>
-      </figure>
-
-      <div class="spacer"></div>
-
-      <!-- Step/Section 2 -->
-      <h2 class="step-title">Step 2 — <!-- EDIT --> Add another step title</h2>
-      <p class="step-desc">
-        <!-- DESCRIPTION -->
-        Outline what the admin/user should do next and expectations.
-      </p>
-
-      <!-- Another Code Block (JSON/YAML/CLI/etc.) -->
-      <pre><code class="language-bash">
-# PLACEHOLDER: Bash/CLI snippet
-echo "Run your command here"
-      </code></pre>
-
-      <!-- Another Image -->
-      <figure>
-        <img class="doc-image"
-             src="https://via.placeholder.com/1200x650.png?text=Another+Placeholder"
-             alt="Second illustrative image placeholder">
-        <figcaption>
-          Optional: add a second caption or notes about this illustration.
-        </figcaption>
-      </figure>
-
-      <div class="spacer"></div>
-
-      <!-- Optional: Table (basic) -->
-      <h2>Reference Table (Optional)</h2>
-      <div class="table-wrapper">
-        <table>
-          <thead>
-            <tr>
-              <th><!-- Column 1 --> Field</th>
-              <th><!-- Column 2 --> Description</th>
-              <th><!-- Column 3 --> Example</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Placeholder A</td>
-              <td>Explain what this setting does.</td>
-              <td>e.g., <code>True</code> / <code>False</code></td>
-            </tr>
-            <tr>
-              <td>Placeholder B</td>
-              <td>When to use this option.</td>
-              <td>e.g., <code>Verbose</code></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <!-- Final Notes / Next Steps -->
-      <section class="summary-box">
-        <h3>Next Steps</h3>
-        <ul>
-          <li>Replace all placeholders (title, breadcrumbs, captions, code, images).</li>
-          <li>Validate code blocks with actual scripts/commands.</li>
-          <li>Swap placeholder images with real screenshots under <code>/assets/images/</code>.</li>
-        </ul>
-      </section>
-    </main>
-  </div>
-
-  <!-- ===== Footer ===== -->
-  <footer class="site-footer">
-    <div class="container">
-      <p>© <!-- YEAR --> 2026 <!-- AUTHOR --> Mohit Maurya · Windows Server Talks</p>
-    </div>
-  </footer>
-</body>
-</html>
+<ol start="16">
+  <li>
+    Certificate Issuer. When you configure the certificate issuer filter, you can specify that computers must select a certificate that is issued by a specific CA. When you configure this filter, the filter enumerates the root and intermediate certification authorities (CAs) for all certificates that are present in the certificate store on the local computer, and allows you to select the correct CA from the list.
+  </li>
+  <li>
+    Extended Key Usage (EKU). The extended key usage (EKU) is a certificate extension that specifies the intended purposes of the public key contained in the certificate.
+  </li>
+  <li>
+    “All purpose” EKU. This option allows the certificate to be used for any purpose, including client authentication, server authentication, and other purposes. This is the most permissive option and should be used only when necessary.
+  </li>
+  <li>
+    “Client auth and other EKUs”. This option allows the certificate to be used for client authentication and other purposes, but not for server authentication.
+  </li>
+  <li>
+    “Any purpose and other EKUs”. This option allows the certificate to be used for any purpose and other authorized purposes, but not for client or server authentication.
+  </li>
+</ol>
