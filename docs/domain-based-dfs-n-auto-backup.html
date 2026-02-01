@@ -17,7 +17,7 @@
   <link rel="stylesheet"
         href="https://mauryamohit07.github.io/WindowsServerTalks/assets/css/custom.css">
 
-  <!-- Site JS (sidebar loader, copy buttons, etc.) -->
+  <!-- Site JS (loads shared header + sidebar, copy buttons, lightbox) -->
   <script
     src="https://mauryamohit07.github.io/WindowsServerTalks/assets/js/site.js"
     defer>
@@ -25,28 +25,23 @@
 </head>
 
 <body>
+  <!-- Skip link for keyboard users -->
   <a class="skip-link" href="#main-content">Skip to content</a>
 
-  <!-- ===== Header ===== -->
-  <header class="site-header">
-    <div class="container">
-      <h1>Windows Server Talks</h1>
-      <p class="tagline">
-        DFS, Active Directory, Hyper‑V, and PowerShell guides by Mohit Maurya
-      </p>
+  <!-- ===== Shared Header placeholder (loaded from /assets/includes/header.html) ===== -->
+  <div id="header-container"></div>
 
-      <nav class="breadcrumbs" aria-label="Breadcrumb">
-        <a href="index.html">Home</a>
-        <span aria-hidden="true">›</span>
-        <span aria-current="page">DFS‑N Auto Backup</span>
-      </nav>
-    </div>
-  </header>
+  <!-- ===== Breadcrumbs (page-specific; keep here unless you template it) ===== -->
+  <nav class="breadcrumbs container" aria-label="Breadcrumb">
+    <a href="index.html">Home</a>
+    <span aria-hidden="true">›</span>
+    <span aria-current="page">DFS‑N Auto Backup</span>
+  </nav>
 
   <!-- ===== Layout ===== -->
   <div class="layout container">
 
-    <!-- Sidebar (loaded dynamically from sidebar.html) -->
+    <!-- Sidebar (shared; loaded from /assets/includes/sidebar.html) -->
     <div id="sidebar-container"></div>
 
     <!-- ===== Main Content ===== -->
