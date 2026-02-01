@@ -657,3 +657,52 @@ button:focus,
   color: #605E5C;
   font-size: 14px;
 }
+
+/* ===== Sidebar search (below "📚 Contents") ===== */
+.sidebar-search {
+  position: relative;
+  margin: 8px 0 12px;
+}
+
+.sidebar-search input[type="search"] {
+  width: 100%;
+  padding: 8px 28px 8px 10px; /* room for clear button on the right */
+  border: 1px solid #E1DFDD;
+  border-radius: 6px;
+  background: #fff;
+  font-size: 14px;
+}
+
+.sidebar-search input[type="search"]:focus {
+  outline: 2px solid #0F6CBD;
+  outline-offset: 2px;
+}
+
+.sidebar-search .sidebar-search-clear {
+  position: absolute;
+  right: 6px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 22px;
+  height: 22px;
+  line-height: 20px;
+  text-align: center;
+  border: 1px solid transparent;
+  background: transparent;
+  color: #605E5C;
+  border-radius: 50%;
+  cursor: pointer;
+  visibility: hidden; /* toggled by JS */
+}
+
+.sidebar-search .sidebar-search-clear:hover {
+  background: #EDEBE9;
+}
+
+/* Highlight style inside links */
+.sidebar a mark {
+  background: #FFF1B6;   /* soft yellow */
+  color: inherit;
+  padding: 0 2px;
+  border-radius: 3px;
+}
