@@ -298,14 +298,7 @@ Namespace: \\contoso.com\Reports
         <li>Optionally validate XML structure using PowerShell.</li>
       </ol>
 
-      <pre><code class="language-powershell">
-Get-ChildItem C:\DFSBackup -Filter *.xml | ForEach-Object {
-    [xml]$x = Get-Content $_.FullName
-    if ($x.DocumentElement -eq $null) {
-        Write-Host "Invalid XML: $($_.Name)"
-    }
-}
-      </code></pre>
+      
 
       <div class="callout info">
         <strong>Disclaimer:</strong>
