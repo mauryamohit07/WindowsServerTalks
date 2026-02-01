@@ -1,15 +1,70 @@
-// site.js — small enhancements for the docs site
+// site.js — shared header/sidebar loader + small UX enhancements
 document.addEventListener('DOMContentLoaded', () => {
-  // --- 1) Auto-highlight active sidebar link ---
-  const current = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
-  document.querySelectorAll('.sidebar a[href]').forEach(a => {
-    const target = a.getAttribute('href').split('/').pop().toLowerCase();
-    if (target === current || (current === '' && target === 'index.html')) {
-      a.classList.add('active');
+  // ---------- Base path detection (GitHub Pages friendly) ----------
+  // If hosted at https://<user>.github.io/<repo>/..., BASE = "/<repo>"
+  // If hosted at the root or running locally (file:// or localhost), BASE = ""
+  const detectBase = () => {
+    const { protocol, hostname, pathname } = window.location;
+    const isGithub = hostname.endsWith('github.io');
+    if (isGithub) {
+      // pathname like: /WindowsServerTalks/path/to/page.html
+      const seg = pathname.split('/').filter(Boolean); // ["WindowsServerTalks","path","to","page.html"]
+      return seg.length ? `/${seg[0]}` : '';
     }
+    return ''; // localhost or custom domain root
+  };
+  const BASE = detectBase();
+
+  // Helper: safely fetch a partial and inject into a host element
+  const injectPartial = async (hostSelector, partialPath, afterInject = () => {}) => {
+    const host = document.querySelector(hostSelector);
+    if (!host) return;
+    try {
+      const res = await fetch(`${BASE}${partialPath}`, { cache: 'no-store' });
+      if (!res.ok) throw new Error(`${res.status} ${res.statusText}`);
+      const html = await res.text();
+      host.innerHTML = html;
+      afterInject(host);
+    } catch (err) {
+      // Optional: show a small non-blocking warning in console
+      console.warn(`Failed to load ${partialPath}:`, err);
+    }
+  };
+
+  // ---------- 1) Load shared HEADER ----------
+  // In your pages, add: <div id="header-container"></div> near the top of <body>
+  injectPartial('#header-container', '/assets/includes/header.html', (headerHost) => {
+    // If you plan to generate breadcrumbs dynamically later, you can do it here.
+    // For now, your pages already contain their own breadcrumbs below the header.
   });
 
-  // --- 2) Add "Copy" buttons to code blocks ---
+  // ---------- 2) Load shared SIDEBAR ----------
+  // In your pages, add: <div id="sidebar-container"></div> inside .layout, as a sibling of <main>
+  injectPartial('#sidebar-container', '/assets/includes/sidebar.html', (sidebarHost) => {
+    // After sidebar is available, highlight the current page link
+    const here = window.location;
+    const normalize = (url) => url.replace(/\/+$/, '').toLowerCase(); // strip trailing slash
+    const currentUrl = normalize(here.origin + here.pathname);
+
+    // Prefer aria-current for accessibility; also keep .active class for your existing CSS
+    sidebarHost.querySelectorAll('a[href]').forEach(a => {
+      const linkUrl = normalize(a.href);
+      if (linkUrl === currentUrl) {
+        a.setAttribute('aria-current', 'page');
+        a.classList.add('active');
+      }
+      // Also consider "index.html" equivalence (e.g., /docs/ == /docs/index.html)
+      if (
+        currentUrl.endsWith('/index.html') &&
+        linkUrl === currentUrl.replace(/\/index\.html$/, '')
+      ) {
+        a.setAttribute('aria-current', 'page');
+        a.classList.add('active');
+      }
+    });
+  });
+
+  // ---------- 3) Copy buttons for code blocks ----------
   document.querySelectorAll('pre > code').forEach(code => {
     const pre = code.parentElement;
     const wrap = document.createElement('div');
@@ -37,7 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // --- 3) Click-to-zoom images (simple lightbox) ---
+  // ---------- 4) Click-to-zoom images (simple lightbox) ----------
   document.querySelectorAll('img.doc-image').forEach(img => {
     img.addEventListener('click', () => {
       const overlay = document.createElement('div');
@@ -50,29 +105,12 @@ document.addEventListener('DOMContentLoaded', () => {
       document.body.appendChild(overlay);
 
       const close = () => overlay.remove();
-      overlay.addEventListener('click', (e) => { if (e.target === overlay || e.target === big) close(); });
+      overlay.addEventListener('click', (e) => {
+        if (e.target === overlay || e.target === big) close();
+      });
       const esc = (e) => { if (e.key === 'Escape') { close(); document.removeEventListener('keydown', esc); } };
       document.addEventListener('keydown', esc);
       overlay.focus();
     });
   });
-});
-
-document.addEventListener("DOMContentLoaded", () => {
-  const sidebar = document.getElementById("sidebar-container");
-  if (sidebar) {
-    fetch("/WindowsServerTalks/assets/includes/sidebar.html")
-      .then(res => res.text())
-      .then(html => {
-        sidebar.innerHTML = html;
-
-        // Highlight current page
-        const links = sidebar.querySelectorAll("a");
-        links.forEach(link => {
-          if (link.href === window.location.href) {
-            link.setAttribute("aria-current", "page");
-          }
-        });
-      });
-  }
 });
