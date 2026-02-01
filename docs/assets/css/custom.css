@@ -546,4 +546,10 @@ button:focus,
   text-decoration: underline;
   opacity: 0.85;
 }
+/* ==================================================
+  for spacer
+================================================== */
+.spacer {
+  height: 32px; /* adjust as needed */
+}
 
