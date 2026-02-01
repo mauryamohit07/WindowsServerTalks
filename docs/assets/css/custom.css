@@ -574,7 +574,7 @@ button:focus,
 
 /* Logo size/behavior */
 .brand-logo img {
-  height: 48px;          /* adjust: 40–56px works well */
+  height: 80px;          /* adjust: 40–56px works well */
   width: auto;
   display: block;
   object-fit: contain;
