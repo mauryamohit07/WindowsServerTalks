@@ -2,44 +2,64 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1">
   <title>Recover Accidentally Removed DFS Namespace Folders and Targets · Windows Server Talks</title>
 
+  <!-- Theme color for mobile address bar -->
+  <meta name="theme-color" content="#0F6CBD">
+
+  <!-- Copilot/Fluent-styled CSS (your existing stylesheet) -->
   <link rel="stylesheet" href="https://mauryamohit07.github.io/WindowsServerTalks/assets/css/custom.css">
+
+  <!-- Small site enhancements (copy buttons, lightbox, active link) -->
   <script src="https://mauryamohit07.github.io/WindowsServerTalks/assets/js/site.js" defer></script>
 </head>
-
 <body>
   <a class="skip-link" href="#main-content">Skip to content</a>
 
+  <!-- ===== Fixed Header (as requested) ===== -->
   <header class="site-header">
     <div class="container">
       <h1>Windows Server Talks</h1>
-      <p class="tagline">DFS, Active Directory, Hyper‑V, and PowerShell guides by Mohit Maurya</p>
-   breadcrumbs container" aria-label="Breadcrumb">
-    <a href="https://mauryamohit07.github.io/WindowsServerTalks/index.html">Home</a>
-    <span aria-hidden="true">›</span>
-    <span aria-current="page">Recover Deleted DFS‑N Links</span>
-  </nav>
+      <p class="tagline">
+        DFS, Active Directory, Hyper‑V, and PowerShell guides by Mohit Maurya
+      </p>
+
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="https://mauryamohit07.github.io/WindowsServerTalks/index.html">Home</a>
+        <span aria-hidden="true">›</span>
+        <span aria-current="page">Recover Deleted DFS‑N Links</span>
+      </nav>
+    </div>
+  </header>
 
   <div class="layout container">
+    <!-- ===== Left pane (slightly grey) ===== -->
     <nav class="sidebar" aria-label="Primary">
       <h3>📚 Contents</h3>
       <ul>
-        <li><a href="https://mauryamohit07.github.io/WindowsServerTalks/domain-based-dfs-n-auto-backup.html">DFS‑N Auto Backup</a></li>
-        <li><a href="https://mauryamohit07.github.io/WindowsServerTalks/recover-deleted-dfs-n-links.html" aria-current="page">Recover Deleted DFS‑N Links</a></li>
-        <li><a href="https://mauryamohit07.github.io/WindowsServerTalks/index.html">← Back to Home</a></li>
+        <li>
+          <a href="https://mauryamohit07.github.io/WindowsServerTalks/domain-based-dfs-n-auto-backup.html">
+            DFS‑N Auto Backup
+          </a>
+        </li>
+        <li>
+          <a href="https://mauryamohit07.github.io/WindowsServerTalks/recover-deleted-dfs-n-links.html" aria-current="page">
+            Recover Deleted DFS‑N Links
+          </a>
+        </li>
+        <li>
+          <a href="https://mauryamohit07.github.io/WindowsServerTalks/index.html">← Back to Home</a>
+        </li>
       </ul>
     </nav>
 
+    <!-- ===== Main content (a little lighter grey) ===== -->
     <main id="main-content" class="content" role="main">
-
-      <h2 class="page-title">
-        Recover Accidentally Removed Namespace Folders and Targets
-      </h2>
-      <p class="page-subtitle">
-        Using Active Directory Recycle Bin (DFS‑N)
-      </p>
+      <h2 class="page-title">Recover Accidentally Removed Namespace Folders and Targets</h2>
+      <p class="page-subtitle">Using Active Directory Recycle Bin (DFS‑N)</p>
 
       <section class="summary-box">
         <h3>Summary</h3>
@@ -51,9 +71,8 @@
 
       <div class="callout warning">
         <strong>Important:</strong>
-        Only <strong>subfolders (DFS links)</strong> and their
-        <strong>targets</strong> can be recovered using this method.
-        <br>
+        Only <strong>subfolders (DFS links)</strong> and their <strong>targets</strong> can be
+        recovered using this method.<br>
         <strong>Entire namespace deletion</strong> requires DFS namespace backups.
       </div>
 
@@ -67,34 +86,35 @@
 Import-Module ActiveDirectory
 $LogFolder = "C:\DFSlogs"
 if (!(Test-Path -Path $LogFolder)) {
-    New-Item -Path $LogFolder -ItemType Directory | Out-Null
+  New-Item -Path $LogFolder -ItemType Directory | Out-Null
 }
 $CurrentDate = Get-Date
 $DeletedDFSObjects = Get-ADObject `
-    -Filter 'ObjectClass -eq "msDFS-Linkv2" -and isDeleted -eq $true' `
-    -IncludeDeletedObjects `
-    -Properties DistinguishedName, Name, ObjectClass, whenChanged, ObjectGUID
-$Result = $DeletedDFSObjects | Select-Object `
+  -Filter 'ObjectClass -eq "msDFS-Linkv2" -and isDeleted -eq $true' `
+  -IncludeDeletedObjects `
+  -Properties DistinguishedName, Name, ObjectClass, whenChanged, ObjectGUID
+
+$Result = $DeletedDFSObjects |
+  Select-Object `
     Name, ObjectClass, DistinguishedName,
     @{Name="ObjectGUID"; Expression={$_.ObjectGUID}},
-    @{Name="DeletedOn"; Expression={($_.whenChanged).ToString("dd-MMM-yyyy HH:mm")}},
-    @{Name="Age"; Expression={
-        if ($_.whenChanged) {
-            $diff = $CurrentDate - $_.whenChanged
-            if ($diff.Days -ge 1) { "$($diff.Days) days ago" }
-            else { "$([math]::Round($diff.TotalHours,1)) hours ago" }
-        } else { "N/A" }
+    @{Name="DeletedOn";  Expression={($_.whenChanged).ToString("dd-MMM-yyyy HH:mm")}},
+    @{Name="Age";        Expression={
+      if ($_.whenChanged) {
+        $diff = $CurrentDate - $_.whenChanged
+        if ($diff.Days -ge 1) { "$($diff.Days) days ago" }
+        else { "$([math]::Round($diff.TotalHours,1)) hours ago" }
+      } else { "N/A" }
     }}
+
 $Result | Out-GridView -Title "Deleted DFS Links Report"
       </code></pre>
 
       <h2>Sample Output</h2>
-
       <figure>
         <img class="doc-image"
              src="https://mauryamohit07.github.io/WindowsServerTalks/assets/images/image4.png"
-             alt="Out-GridView sample showing deleted DFS links"
-             onclick="openLightbox(this.src)">
+             alt="Out-GridView sample showing deleted DFS links">
         <figcaption>
           Out‑GridView output showing deleted DFS links with ObjectGUID and age.
         </figcaption>
@@ -103,20 +123,17 @@ $Result | Out-GridView -Title "Deleted DFS Links Report"
       <figure>
         <img class="doc-image"
              src="https://mauryamohit07.github.io/WindowsServerTalks/assets/images/image5.png"
-             alt="CSV export showing deleted DFS links"
-             onclick="openLightbox(this.src)">
+             alt="CSV export showing deleted DFS links">
         <figcaption>
           CSV export used to filter links before bulk restore.
         </figcaption>
       </figure>
 
       <h2>Expected Results</h2>
-
       <figure>
         <img class="doc-image"
              src="https://mauryamohit07.github.io/WindowsServerTalks/assets/images/image6.png"
-             alt="Restored DFS links"
-             onclick="openLightbox(this.src)">
+             alt="Restored DFS links">
         <figcaption>
           Restored DFS links visible after successful recovery.
         </figcaption>
@@ -125,13 +142,11 @@ $Result | Out-GridView -Title "Deleted DFS Links Report"
       <figure>
         <img class="doc-image"
              src="https://mauryamohit07.github.io/WindowsServerTalks/assets/images/image7.png"
-             alt="DFS restore log output"
-             onclick="openLightbox(this.src)">
+             alt="DFS restore log output">
         <figcaption>
           Restore log confirming successful object recovery.
         </figcaption>
       </figure>
-
     </main>
   </div>
 
